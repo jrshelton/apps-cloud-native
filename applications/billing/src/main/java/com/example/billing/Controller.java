@@ -12,13 +12,13 @@ public class Controller {
     @Autowired
     private com.example.payments.Gateway paymentGateway;
 
-    @RequestMapping(value = "/reocurringPayment", method = RequestMethod.POST)
-    public ResponseEntity<String> createReocurringPayment(@RequestBody int amount){
+    @RequestMapping(value = "/reoccurringPayment", method = RequestMethod.POST)
+    public ResponseEntity<String> createReoccurringPayment(@RequestBody int amount){
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.add("content-type", MediaType.APPLICATION_JSON.toString());
 
         ResponseEntity<String> response;
-        if (paymentGateway.createReocurringPayment(amount)) {
+        if (paymentGateway.createReoccurringPayment(amount)) {
             response = new ResponseEntity<>("{errors: []}", responseHeaders, HttpStatus.CREATED);
         } else {
             response = new ResponseEntity<>("{errors: [\"error1\", \"error2\"]}", responseHeaders, HttpStatus.BAD_REQUEST);
